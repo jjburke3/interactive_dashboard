@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Huddle</title>
+	<!-- jQuery reference -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- bootstrap reference -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- page specific css styling reference -->
+	<link rel="stylesheet" type="text/css" href="css/huddles.css">
+	<!-- d3.js reference -->
+	<script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<!-- this div contains state header selector and list of possible metrics shown -->
+	<div id="sidebar">
+		<div id="state-div">
+			<h2>Florida</h2>
+		</div>
+		<div>
+			<ul>
+				<li>Windhaven IT</li>	
+				<li>Product</li>
+				<li>Customer Service</li>
+				<li>Shared Services</li>
+				<li>Policy Processing</li>
+				<li>Claims</li>
+				<li>Legal</li>
+				<li>Customer Opinion</li>	
+				<li>Talent Management</li>		
+			</ul>
+		</div>
+	</div>
+	<div id="main-body">
+		<div id="header">
+			<!-- date picker for data; defaults to yesterday -->
+			<input id ="datepicker" type="date">
+			<!-- windhaven logo -->
+			<img src="images/main-graphic.png" style="height: 10vh;">
+		</div>
+		<div id="table-div">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<!-- headings of table are always the same -->
+						<th>Metric</th>
+						<th>Yesterday</th>
+						<th>1 Week Average</th>
+						<th>1 Month Average</th>
+						<th>1 Year Average</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+	</div>
+	<!-- this div is the pop up on cell mouse over -->
+	<div id="tooltip" class="hidden"></div>
+	<!-- javascript file for this specific html file -->
+	<script src="javascript/huddles.js"></script>
+</body>
+</html>

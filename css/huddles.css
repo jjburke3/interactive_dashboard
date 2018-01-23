@@ -1,0 +1,141 @@
+
+/* set sidebar width and height based on size of window,
+set color to blue and position fixed to the top left corner of window */
+#sidebar {
+	width: 15vw; 
+	height: 100%; 
+	background-color: #4489af; 
+	position: fixed;
+}
+/* set height of state header based on size of window, set color to blue */
+#state-div {
+	height: 10vh;
+	background-color: #347EAA;
+}
+/* pop-up div locations is specified based on window, no other object
+width and height are determined by html contents */
+#pop-up {
+	position: absolute;
+	width: auto;
+	height: auto;
+	padding: 10px;
+	background-color: #C9CBCB;
+}
+/* table is in a fixed position on screen.  size will not exceed its body container.
+ will scroll is contents are large enough */
+#table-div {
+	background-color: white;
+	position: fixed;
+	margin: 2vh;
+	max-height: 85vh;
+	max-width: 80vw;
+	overflow: auto;
+}
+/* text details of state selector */
+#state-div h2 {
+	margin: 0px;
+	padding: 2vh 1vw 0px;
+	pointer-events: none;
+	color: white;
+	font-weight: bold;
+}
+
+#header {
+	width: 100%;
+	height: 10vh;
+	background-color: #347EAA; 
+}
+
+#header img {
+	position: absolute;
+	right: 0px;
+}
+/* margin is size of sidebar so there is no overlap.  width and height are function of window size */
+#main-body {
+	margin-left: 15vw; 
+	width: 85vw; 
+	height: 100%; 
+	background-color:#70aec3; 
+	position: fixed;
+}
+
+/* format each item in selections list */
+#sidebar ul {
+	list-style: none;
+	padding: 0px;
+}
+/* format list as a whole */
+#sidebar li {
+	font-weight: bold;
+	padding: 15px 1vw;
+	margin: 0px 0px;
+	color: white;
+}
+/* change formatting when hovering over options on side bar*/
+#sidebar li:hover {
+	background-color: white;
+	color: black;
+}
+
+
+#sidebar li.selected {
+	background-color: lightblue;
+}
+/* right format all numbers, the second cell in each row*/
+td:nth-child(n+2) {
+	text-align: right;
+}
+
+/* pop-up location is based on window (used to locate to mouse position), and width and height are determined by contents*/
+ #tooltip {
+        position: absolute;
+        width: auto;
+        height: auto;
+        padding: 10px;
+		padding-left: 25px;
+        background-color: #E6DEDC;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+		opacity: .95;
+}
+
+#tooltipTable {
+	border-color: black;
+}
+
+
+#tooltipTable td {
+	padding: 5px;
+	
+}
+/* pop-up graph axis formating on lines */
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+/* pop-up graph lines*/
+.line {
+	fill: none;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
+
+/* pop-up graph axis font styling*/
+.axis {
+	font: 9px sans-serif;
+}
+
+/* make datepicker just to left of Windhaven logo, and center in header */
+#datepicker {
+	margin-top: 3vh;
+	height: 4vh;
+	position: absolute;
+	right: 45vh;
+}

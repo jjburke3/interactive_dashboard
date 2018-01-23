@@ -1,0 +1,156 @@
+State,Board,Metric,Yesterday,Week,Month,Year
+Florida,PIF,PIF,303,42,405,9
+Florida,Claims,New Claims,7453,6185,5147,8893
+Florida,Claims,Claims Closures,2691,4183,8074,1209
+Florida,Claims,Inventory,9716,9368,4108,8049
+Florida,Claims,Calls Received,8958,280,129,3773
+Florida,Claims,Answer Rate,3965,5993,7363,3782
+Florida,Claims,Outbound Calls (as a % of inbound calls),1352,4815,8827,3789
+Florida,Claims,Recoveries (Previous Day),9117,4386,2187,9478
+Florida,Claims,"PIP Calendar Paid Severity, via the method in JJ's web page",8324,9387,1594,4850
+Florida,Claims,"PD Calendar Paid Severity, via the method in JJ's Web page",8243,9146,7007,3454
+Florida,Claims,BI Calendar Paid severity...,7503,8722,7671,9300
+Florida,Claims,CMP Calendar paid severity,9372,44,9435,8401
+Florida,Claims,COL calendar paid severity,9134,8069,8270,7250
+Florida,Customer Service,PH Calls,5318,5482,9786,2356
+Florida,Customer Service,PH ASA,1128,5592,515,9768
+Florida,Customer Service,PH AHT,2822,4323,2747,6391
+Florida,Customer Service,PH ABD,2183,7768,6902,4715
+Florida,Customer Service,PH Chat,307,1842,1975,7885
+Florida,Customer Service,PH Chat Satisfaction,4890,2273,5012,1256
+Florida,Customer Service,Agent Calls,2320,9114,7270,4310
+Florida,Customer Service,Agent ASA,7023,6658,7260,7826
+Florida,Customer Service,Agent AHT,4515,3352,8875,9815
+Florida,Customer Service,Agent ABD,6061,2748,2431,7004
+Florida,Customer Service,Agent Chat,4129,6396,1875,2781
+Florida,Customer Service,Agent Chat Satisfaction,6368,5800,7071,8146
+Florida,Shared Services,NB outside standard,8307,3083,1079,216
+Florida,Shared Services,ENDO outside standard,6594,9133,2787,6498
+Florida,Shared Services,FNOL Calls Received,3347,823,104,6191
+Florida,Shared Services,FNOL Abandon,1667,7728,4627,9222
+Florida,Shared Services,FNOL ASA,8314,5456,1707,9016
+Florida,Shared Services,PHL Calls Received,5717,408,3631,7087
+Florida,Shared Services,PHL Abandon,7783,2229,5277,8354
+Florida,Shared Services,PHL ASA,8839,7876,8931,8863
+Florida,Talent Management,Employees,9195,8007,1551,9329
+Florida,Talent Management,Positions Open,6442,1194,1997,6444
+Florida,Talent Management,Hires,5829,3679,3092,906
+Florida,Talent Management,Resignations,5122,3045,7214,1675
+Florida,Talent Management,Interviews,4782,6263,6974,5276
+Florida,Legal,New Suits,1818,6621,7551,7186
+Florida,Legal,Closed Suits,2777,2047,2375,9083
+Florida,Legal,Win %,3403,6927,8621,4983
+Florida,Legal,Inventory,5011,4982,2903,8337
+Florida,Legal,MSJ served,2253,5443,6129,1041
+Florida,Legal,Depos Pending but Scheduled (as a % of open suits),3620,8784,8170,1197
+Florida,Legal,Discovery in Process (as a % of open suits),9616,3062,6757,8174
+Florida,Product,Number of Quotes,6117,7018,5903,5109
+Florida,Product,Number of Submissions,1008,1396,4320,5370
+Florida,Product,Ratio of New Policies Bound to Quotes,7207,7614,5160,8010
+Florida,Product,Number of new policies written,7792,810,3285,1974
+Florida,Product,Average Premium New Business,4192,4995,1971,8021
+Florida,Product,Number of Carchex Sold,5215,5752,1286,9714
+Florida,Product,Number of policies renewed,9388,7473,3904,2922
+Florida,Product,Average Premium Renewal Business,8846,1011,9574,8518
+Florida,Product,Retention Ratio,3265,1060,1404,8663
+Florida,Product,Highest Hit Ratio by Territory (hit ratio = new policies bound / quotes),398,460,7593,9725
+Florida,Product,Frequency of PIP,5892,5546,7532,9791
+Florida,Product,Frequency of PD,7495,9174,9220,7868
+Florida,Product,Frequency of BI,7864,1629,997,1025
+Florida,Product,Frequency of CMP,8947,4996,2569,6784
+Florida,Product,Frequency of Col,1358,1847,8379,7544
+Florida,Product,Frequency of UMBI,6834,1177,5222,719
+Florida,Product,Frequency of UMPD,3940,4265,9922,9702
+Florida,Policy Processing,Number of CC Payments Taken,6676,3172,663,5276
+Florida,Policy Processing,Number of Bank Payments Taken,6274,2807,5613,8629
+Florida,Policy Processing,Number of NSFs,8128,4676,9031,1051
+Florida,Policy Processing,Number of Cancellations for non-payment,1606,4779,8307,401
+Florida,Policy Processing,Number of late payments,5586,6710,6769,9931
+Florida,Policy Processing,Number of reinstatements,5344,9237,2762,2479
+Florida,Policy Processing,Fees in dollars,4300,5856,8779,7170
+Florida,Policy Processing,Number of refunds,9642,795,2606,7764
+Florida,Policy Processing,Number of individual pieces of mail sent,914,3531,2935,3503
+Florida,Policy Processing,Number of emails sent by system,7232,9758,5069,412
+Florida,Policy Processing,Number of policies with negative equity,5453,5010,9484,1751
+Florida,Customer Opinion,Number of new complaints with TDI,434,5115,1837,2826
+Florida,Customer Opinion,Number of new Internent complaints measured by 1 or 2 stars,7814,6281,8926,1622
+Florida,Windhaven IT,Minutes of latency on core system,3181,9387,1588,9542
+Florida,Windhaven IT,# of complaints to IT hellp desk about core system,7237,9306,5973,5560
+Florida,Windhaven IT,# of complaints to IT help desk about phones,4300,7559,49,4470
+Texas,Claims,New Claims,9264,3945,7214,3651
+Texas,Claims,Claims Closures,7281,9987,5538,506
+Texas,Claims,Inventory,1615,1929,4447,5774
+Texas,Claims,Calls Received,3270,2992,8251,4506
+Texas,Claims,Answer Rate,2301,2354,3598,3572
+Texas,Claims,Outbound Calls (as a % of inbound calls),2351,2808,7364,9193
+Texas,Claims,Recoveries (Previous Day),6595,7436,9236,4710
+Texas,Claims,"PIP Calendar Paid Severity, via the method in JJ's web page",805,6028,1776,5234
+Texas,Claims,"PD Calendar Paid Severity, via the method in JJ's Web page",8590,6602,4978,9200
+Texas,Claims,BI Calendar Paid severity...,6038,7936,900,3098
+Texas,Claims,CMP Calendar paid severity,9017,1049,9875,8669
+Texas,Claims,COL calendar paid severity,4473,3879,5919,7066
+Texas,Customer Service,PH Calls,1996,746,4562,9623
+Texas,Customer Service,PH ASA,1396,1731,526,6256
+Texas,Customer Service,PH AHT,2982,5539,9663,6643
+Texas,Customer Service,PH ABD,1682,5506,4678,9655
+Texas,Customer Service,PH Chat,2770,8170,7619,1139
+Texas,Customer Service,PH Chat Satisfaction,6176,3313,761,1986
+Texas,Customer Service,Agent Calls,2214,1319,7356,1793
+Texas,Customer Service,Agent ASA,8236,8069,6880,7373
+Texas,Customer Service,Agent AHT,4184,7799,2246,5229
+Texas,Customer Service,Agent ABD,2827,1514,6322,9232
+Texas,Customer Service,Agent Chat,3720,150,7082,6197
+Texas,Customer Service,Agent Chat Satisfaction,3034,2477,7396,2021
+Texas,Shared Services,NB outside standard,2580,3693,2808,7442
+Texas,Shared Services,ENDO outside standard,3183,9226,5134,8744
+Texas,Shared Services,FNOL Calls Received,2631,1245,2241,391
+Texas,Shared Services,FNOL Abandon,5830,9885,613,3732
+Texas,Shared Services,FNOL ASA,9851,1028,115,7614
+Texas,Shared Services,PHL Calls Received,3852,4289,3114,8718
+Texas,Shared Services,PHL Abandon,6853,6821,6653,3661
+Texas,Shared Services,PHL ASA,1644,2798,4354,3800
+Texas,Talent Management,Employees,8912,1328,5717,6806
+Texas,Talent Management,Positions Open,9335,3009,3900,145
+Texas,Talent Management,Hires,3823,9148,4170,7444
+Texas,Talent Management,Resignations,5228,465,9104,5953
+Texas,Talent Management,Interviews,5980,5082,4066,2388
+Texas,Legal,New Suits,4761,9949,3165,9476
+Texas,Legal,Closed Suits,4643,9595,6798,4705
+Texas,Legal,Win %,5959,3260,2682,6665
+Texas,Legal,Inventory,7714,3699,2133,1579
+Texas,Legal,MSJ served,9850,7304,5561,5161
+Texas,Legal,Depos Pending but Scheduled (as a % of open suits),5983,6175,8756,6712
+Texas,Legal,Discovery in Process (as a % of open suits),1256,6545,7836,8605
+Texas,Product,Number of Quotes,9572,4615,4306,4523
+Texas,Product,Number of Submissions,8182,8301,9243,4682
+Texas,Product,Ratio of New Policies Bound to Quotes,9666,7993,136,5011
+Texas,Product,Number of new policies written,508,2236,8099,4990
+Texas,Product,Average Premium New Business,3494,615,8674,8150
+Texas,Product,Number of Carchex Sold,1603,2480,8736,2416
+Texas,Product,Number of policies renewed,5221,4162,7804,4720
+Texas,Product,Average Premium Renewal Business,8386,8135,1340,7287
+Texas,Product,Retention Ratio,6954,8941,4320,5862
+Texas,Product,Highest Hit Ratio by Territory (hit ratio = new policies bound / quotes),5997,4781,1304,4707
+Texas,Product,Frequency of PIP,3978,7116,7879,6711
+Texas,Product,Frequency of PD,9458,6305,5076,7137
+Texas,Product,Frequency of BI,9876,2906,230,6564
+Texas,Product,Frequency of CMP,442,151,9252,4512
+Texas,Product,Frequency of Col,1079,6525,7283,1900
+Texas,Product,Frequency of UMBI,1752,6290,7934,8567
+Texas,Product,Frequency of UMPD,6286,1629,9541,4578
+Texas,Policy Processing,Number of CC Payments Taken,6080,47,8768,4231
+Texas,Policy Processing,Number of Bank Payments Taken,9352,6033,1884,6065
+Texas,Policy Processing,Number of NSFs,9260,9889,8818,6603
+Texas,Policy Processing,Number of Cancellations for non-payment,6348,605,3195,1575
+Texas,Policy Processing,Number of late payments,8786,2399,2819,8790
+Texas,Policy Processing,Number of reinstatements,9147,5953,1537,6236
+Texas,Policy Processing,Fees in dollars,1489,8757,9657,6143
+Texas,Policy Processing,Number of refunds,9023,8737,7038,8249
+Texas,Policy Processing,Number of individual pieces of mail sent,8401,3377,9934,7932
+Texas,Policy Processing,Number of emails sent by system,9377,9378,9902,5890
+Texas,Policy Processing,Number of policies with negative equity,6928,1588,5272,8430
+Texas,Customer Opinion,Number of new complaints with TDI,1389,8100,8564,3219
+Texas,Customer Opinion,Number of new Internent complaints measured by 1 or 2 stars,2746,7799,3855,6847
+Texas,Windhaven IT,Minutes of latency on core system,2898,8054,7740,980
+Texas,Windhaven IT,# of complaints to IT hellp desk about core system,7126,5519,1056,5723
+Texas,Windhaven IT,# of complaints to IT help desk about phones,2173,6785,3567,5456
