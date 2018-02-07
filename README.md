@@ -1,6 +1,6 @@
 # Interactive Daily Dashboard
 
-[Link](https://htmlpreview.github.io/?https://github.com/jjburke3/interactive_dashboard/blob/master/)
+[Link](https://htmlpreview.github.io/?https://github.com/jjburke3/interactive_dashboard/blob/master/index.html)
 
 This dashboard was meant to display key metrics on a daily basis.  It originally pulled directly from a SQL database using a PHP connection (I've left the PHP files included with credentials scrubbed)
 
