@@ -139,3 +139,7 @@ td:nth-child(n+2) {
 	position: absolute;
 	right: 45vh;
 }
+
+.hidden {
+	display: none;
+}

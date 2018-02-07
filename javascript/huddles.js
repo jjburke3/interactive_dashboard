@@ -1,8 +1,9 @@
 $(document).ready(function() { // wait until html loads to run
 	// get todays date to set date selected equal to that
-			var today = new Date();
-			$("#datepicker").val(d3.timeFormat("%Y-%m-%d")(today));
-	d3.select("#datepicker").on("change",pullData);
+	// remove for demo
+			//var today = new Date();
+			//$("#datepicker").val(d3.timeFormat("%Y-%m-%d")(today));
+	//d3.select("#datepicker").on("change",pullData);
 	// scales for high and low metrics
 	var colorScale = d3.scaleLinear()
 		.clamp(true)
@@ -23,11 +24,23 @@ $(document).ready(function() { // wait until html loads to run
 		
 	d3.select("tbody").selectAll("tr").remove();	
 	// date variable passed to php
-	var date = d3.select("#datepicker").property("value");
+	// removed for demo 
+	// var date = d3.select("#datepicker").property("value");
 	// varaible passed to php to determine whether data is pulled from current table or old data table
-	var tables = date==d3.timeFormat("%Y-%m-%d")(today)?0:1;
+	// removed for demo
+	// var tables = date==d3.timeFormat("%Y-%m-%d")(today)?0:1;
 	// pull data from servers on page load
-	var data = d3.json("php/huddles_data.php?table="+tables+"&date="+date, function(error, data) {
+	// data pulled from csv instead of php script for demo
+	// var data = d3.json("php/huddles_data.php?table="+tables+"&date="+date, function(error, data) {
+	var data = d3.csv("data/huddles_data.csv", function(error, data) {
+		data.forEach(function(d) {
+			d.WEEKDAY_DISTRIBUTION = d.WEEKDAY_DISTRIBUTION?JSON.parse(d.WEEKDAY_DISTRIBUTION):"";
+			d.DAY_DISTRIBUTION = d.DAY_DISTRIBUTION?JSON.parse(d.DAY_DISTRIBUTION):"";
+			d.WEEK_DISTRIBUTION = d.WEEK_DISTRIBUTION?JSON.parse(d.WEEK_DISTRIBUTION):"";
+			d.MONTH_DISTRIBUTION = d.MONTH_DISTRIBUTION?JSON.parse(d.MONTH_DISTRIBUTION):"";
+			
+			
+		});
 		// output to console resulting data
 		console.log(data);
 		// array for all states included; populates state selector
@@ -139,17 +152,17 @@ $(document).ready(function() { // wait until html loads to run
 										"calc" : 
 											((+d.YESTERDAY/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.YESTERDAY_DAYS))
 												/d3.max([1,(+d.PIF_YESTERDAY/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.YESTERDAY_DAYS))])),
-										"dist" : d.WEEKDAY_DISTRIBUTION?d.WEEKDAY_DISTRIBUTION.split(",").sort(function(a, b) {return +a - +b;}):""},
+										"dist" : d.WEEKDAY_DISTRIBUTION?d.WEEKDAY_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {return +a - +b;}):""},
 									1 : {"main" : d.PRIOR_WEEK, 
 										"calc" : 
 											((+d.PRIOR_WEEK/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.PRIOR_WEEK_DAYS))
 												/d3.max([1,(+d.PIF_PRIOR_WEEK/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.PRIOR_WEEK_DAYS))])),
-										"dist" : d.WEEK_DISTRIBUTION?d.WEEK_DISTRIBUTION.split(",").sort(function(a, b) {return +a - +b;}):""},
+										"dist" : d.WEEK_DISTRIBUTION?d.WEEK_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {return +a - +b;}):""},
 									2 : {"main" : d.PRIOR_MONTH, 
 										"calc" : 
 											((+d.PRIOR_MONTH/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.PRIOR_MONTH_DAYS))
 												/d3.max([1,(+d.PIF_PRIOR_MONTH/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.PRIOR_MONTH_DAYS))])),
-										"dist" : d.MONTH_DISTRIBUTION?d.MONTH_DISTRIBUTION.split(",").sort(function(a, b) {return +a - +b;}):""},
+										"dist" : d.MONTH_DISTRIBUTION?d.MONTH_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {return +a - +b;}):""},
 									3 : {"main" : d.PRIOR_YEAR, "other" : d.PRIOR_YEAR2, 
 										"calc" : 
 											((+d.PRIOR_YEAR/(notAveraged.includes(d.DISPLAY_FORMAT)?1:+d.PRIOR_YEAR_DAYS))
@@ -180,22 +193,22 @@ $(document).ready(function() { // wait until html loads to run
 										"metric" : d.YESTERDAY, "metric2" : +d.YESTERDAY2,
 										"days" : +d.YESTERDAY_DAYS, "days2" : +d.YESTERDAY_DAYS,
 										"pif" : +d.PIF_YESTERDAY/d3.max([1,+d.YESTERDAY_DAYS]), "pif2" : +d.PIF_YESTERDAY2/d3.max([1,+d.YESTERDAY2_DAYS]),
-										"mean" : d.WEEKDAY_DISTRIBUTION?d3.mean(d.WEEKDAY_DISTRIBUTION.split(",").sort(function(a, b) {return +a - +b;})):"", 
-										"deviation" : d.WEEKDAY_DISTRIBUTION?d3.deviation(d.WEEKDAY_DISTRIBUTION.split(",").sort(function(a, b) {
+										"mean" : d.WEEKDAY_DISTRIBUTION?d3.mean(d.WEEKDAY_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {return +a - +b;})):"", 
+										"deviation" : d.WEEKDAY_DISTRIBUTION?d3.deviation(d.WEEKDAY_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {
 												return +a - +b;})):""},
 									1 : {"label1" : "Prior Week", "label2" : "2 Weeks Prior",
 										"metric" : d.PRIOR_WEEK, "metric2" : +d.PRIOR_WEEK2,
 										"days" : +d.PRIOR_WEEK_DAYS, "days2" : +d.PRIOR_WEEK2_DAYS,
 										"pif" : +d.PIF_PRIOR_WEEK/d3.max([1,+d.PRIOR_WEEK_DAYS]), "pif2" : +d.PIF_PRIOR_WEEK2/d3.max([1,+d.PRIOR_WEEK2_DAYS]),
-										"mean" : d.WEEK_DISTRIBUTION?d3.mean(d.WEEK_DISTRIBUTION.split(",").sort(function(a, b) {return +a - +b;})):"", 
-										"deviation" : d.WEEK_DISTRIBUTION?d3.deviation(d.WEEK_DISTRIBUTION.split(",").sort(function(a, b) {
+										"mean" : d.WEEK_DISTRIBUTION?d3.mean(d.WEEK_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {return +a - +b;})):"", 
+										"deviation" : d.WEEK_DISTRIBUTION?d3.deviation(d.WEEK_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {
 												return +a - +b;})):""},
 									2 : {"label1" : "Prior Month", "label2" : "2 Months Prior",
 										"metric" : d.PRIOR_MONTH, "metric2" : +d.PRIOR_MONTH2,
 										"days" : +d.PRIOR_MONTH_DAYS, "days2" : +d.PRIOR_MONTH2_DAYS,
 										"pif" : +d.PIF_PRIOR_MONTH/d3.max([1,+d.PRIOR_MONTH_DAYS]), "pif2" : +d.PIF_PRIOR_MONTH2/d3.max([1,+d.PRIOR_MONTH2_DAYS]),
-										"mean" : d.MONTH_DISTRIBUTION?d3.mean(d.MONTH_DISTRIBUTION.split(",").sort(function(a, b) {return +a - +b;})):"", 
-										"deviation" : d.MONTH_DISTRIBUTION?d3.deviation(d.MONTH_DISTRIBUTION.split(",").sort(function(a, b) {
+										"mean" : d.MONTH_DISTRIBUTION?d3.mean(d.MONTH_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {return +a - +b;})):"", 
+										"deviation" : d.MONTH_DISTRIBUTION?d3.deviation(d.MONTH_DISTRIBUTION.map(function(d) {return +d.n;}).sort(function(a, b) {
 												return +a - +b;})):""},
 									3 : {"label1" : "Prior Year", "label2" : "2 Years Prior",
 										"metric" : d.PRIOR_YEAR, "metric2" : +d.PRIOR_YEAR2,
@@ -252,20 +265,20 @@ $(document).ready(function() { // wait until html loads to run
 				.property("distribution",function(d) {// pass the distribution string as an array into a variable saved on the cell
 					switch(i) {
 						case 0:
-							var result = d.WEEKDAY_DISTRIBUTION?d.WEEKDAY_DISTRIBUTION.split(","):"";
+							var result = d.WEEKDAY_DISTRIBUTION?d.WEEKDAY_DISTRIBUTION:"";
 							break;
 						case 1:
-							var result = d.WEEK_DISTRIBUTION?d.WEEK_DISTRIBUTION.split(","):"";
+							var result = d.WEEK_DISTRIBUTION?d.WEEK_DISTRIBUTION:"";
 							break;
 						case 2:
-							var result = d.MONTH_DISTRIBUTION?d.MONTH_DISTRIBUTION.split(","):"";
+							var result = d.MONTH_DISTRIBUTION?d.MONTH_DISTRIBUTION:"";
 							break;
 						case 3:
 							var result = "";
 							break;
 					};
 					return result})
-				.property("other-distribution",function(d) {return i==0?(d.DAY_DISTRIBUTION?d.DAY_DISTRIBUTION.split(","):""):"";})// pass the daily distribution in addition to weekday distribution
+				.property("other-distribution",function(d) {return i==0?(d.DAY_DISTRIBUTION?d.DAY_DISTRIBUTION:""):"";})// pass the daily distribution in addition to weekday distribution
 				.property("high-low",function(d) {return d.COLOR_SCALE?d.COLOR_SCALE:"";})
 				.property("main-value",function(d) {
 					switch(i) {
@@ -297,24 +310,24 @@ $(document).ready(function() { // wait until html loads to run
 					{
 						var pData = cell.property("distribution");
 						// mean and standard deviation of distribution
-						var sigma = d3.deviation(pData);
-						var mean = d3.mean(pData);
+						var sigma = d3.deviation(pData.map(function(d) {return d.n;}));
+						var mean = d3.mean(pData.map(function(d) {return d.n;}));
 						var mainValue = +cell.property("main-value");
 						// add displayed value to distribution if it is not the most recent entry
-						if(+pData[0] != mainValue)
+						if(+pData[0].n != mainValue)
 						{
 							/*unshift adds a value to the start of the array.  i use this instead of push because sql passes the values through 
 							ordered by date in descending order.  this is so if some values are cut off due to character limitis, they are old 
 							values instead of new ones*/
-							pData.unshift(mainValue)
+							pData.unshift({"d" : 20180205, "n" : mainValue})
 						}
 						
 						/*minimum value the distribution graph will look at.  it is the min of the displayed value 
 							and then whatever is higher, the smallest value in the distribution or the mean minus 3 standard deviations */
-						var minAmount = d3.min([mainValue,d3.max([mean - 3 * sigma, d3.min(pData, function(d) {return +d;})])]);
+						var minAmount = d3.min([mainValue,d3.max([mean - 3 * sigma, d3.min(pData, function(d) {return +d.n;})])]);
 						/*maximum value the distribution graph will look at.  it is the max of the displayed value 
 							and then whatever is lower, the highest value in the distribution or the mean plus 3 standard deviations */
-						var maxAmount = d3.max([mainValue,d3.min([mean + 3 * sigma, d3.max(pData, function(d) {return +d;})])]);
+						var maxAmount = d3.max([mainValue,d3.min([mean + 3 * sigma, d3.max(pData, function(d) {return +d.n;})])]);
 						// number of buckets distribution graph will have
 						// the lesser of 20 and whichever is higher, the difference between the min and max and the distinct count of different values
 						var steps = d3.min([20,d3.max([maxAmount-minAmount,pData.filter(function(v, i) {return i==pData.lastIndexOf(v);}).length])]);
@@ -329,7 +342,7 @@ $(document).ready(function() { // wait until html loads to run
 								// q is bucket start range
 								q = minAmount + (i * stepAmount);
 								// p is number of values that fit in bucket
-								p = pData.filter(function(d) {return d >= q && d < q + stepAmount;}).length/pData.length;
+								p = pData.filter(function(d) {return +d.n >= q && +d.n < q + stepAmount;}).length/pData.length;
 								el = {"q" : q, "p" : p};
 								allData.push(el);
 								
@@ -339,13 +352,18 @@ $(document).ready(function() { // wait until html loads to run
 						var margin = {top: 1, right: 15, bottom: 20, left: 5},
 							width = 300 - margin.left - margin.right,
 							height = 150 - margin.top - margin.bottom;
-						var margin2 = {top: 1, right: 5, bottom: 2, left: 30},
+						var margin2 = {top: 1, right: 5, bottom: 20, left: 30},
 							width2 = 300 - margin2.left - margin2.right,
 							height2 = 150 - margin2.top - margin2.bottom;
+						// set variable to parse date values
+						var parseTime = d3.timeParse("%Y%m%d");
+						
+						var formatTime = d3.timeFormat("%Y-%m-%d");
+							
 						// set x and y scales for both charts
 						var x = d3.scaleLinear()
 							.range([0,width]);
-						var x2 = d3.scaleLinear()
+						var x2 = d3.scaleTime()
 							.range([0,width2]);
 							
 						var y = d3.scaleLinear()
@@ -354,12 +372,13 @@ $(document).ready(function() { // wait until html loads to run
 							.range([height2,0]);
 						// x range for distribution chart is highest and lowest bucket values
 						x.domain(d3.extent(allData, function(d) {return d.q;}));
-						// x range for time series chart is observation count
-						x2.domain([pData.length-1,0]);
+						// x range for time series chart is date range
+						x2.domain([d3.min(pData, function(d) {return parseTime(d.d);}), d3.max(pData, function(d) {return parseTime(d.d);})]);
+						
 						// y range for distribution chart is lowest and highest frequency
 						y.domain(d3.extent(allData, function(d) {return d.p;}));
 						// y range for time series chart is highest and lowest values
-						y2.domain(d3.extent(pData, function(d) {return +d;}));
+						y2.domain(d3.extent(pData, function(d) {return +d.n;}));
 						// default to 1, multiply by seven for day of week time series
 						var weekdayMultiplier = 1;
 						// add a daily line to each chart if looking at day of week numbers
@@ -367,11 +386,11 @@ $(document).ready(function() { // wait until html loads to run
 							// create distribution for all days data
 							var pData1 = cell.property("other-distribution");
 							// mean and starndard deviation for all days
-							var sigma1 = d3.deviation(pData1);
-							var mean1 = d3.mean(pData1);
+							var sigma1 = d3.deviation(pData1.map(function(d) {return +d.n;}));
+							var mean1 = d3.mean(pData1.map(function(d) {return +d.n;}));
 							// same methodology as regular data
-							var minAmount1 = d3.min([mainValue,d3.max([mean1 - 3 * sigma1, d3.min(pData1, function(d) {return +d;})])]);
-							var maxAmount1 = d3.max([mainValue,d3.min([mean1 + 3 * sigma1, d3.max(pData1, function(d) {return +d;})])]);
+							var minAmount1 = d3.min([mainValue,d3.max([mean - 3 * sigma1, d3.min(pData1, function(d) {return +d.n;})])]);
+							var maxAmount1 = d3.max([mainValue,d3.min([mean + 3 * sigma1, d3.max(pData1, function(d) {return +d.n;})])]);
 							// use same step amount as regular data to get similar frequency ranges
 							var steps1 = Math.ceil((maxAmount1-minAmount1)/stepAmount);
 						
@@ -380,7 +399,7 @@ $(document).ready(function() { // wait until html loads to run
 							{
 								for (var i = 0; i <= steps1; i++) {
 									q = minAmount1 + (i * stepAmount);
-									p = pData1.filter(function(d) {return d >= q && d < q + stepAmount;}).length/pData1.length;
+									p = pData1.filter(function(d) {return +d.n >= q && +d.n < q + stepAmount;}).length/pData1.length;
 									el = {"q" : q, "p" : p};
 									allData1.push(el);
 								}
@@ -388,10 +407,9 @@ $(document).ready(function() { // wait until html loads to run
 							// expand domain to include range of all days data
 							x.domain([d3.min([d3.min(allData,function(d) {return d.q;}),d3.min(allData1,function(d) {return d.q;})]),
 								d3.max([d3.max(allData,function(d) {return d.q;}),d3.max(allData1,function(d) {return d.q;})])]);
-							// is not just set to 7 because sometimes only looks at weekday data
-							weekdayMultiplier = Math.round(pData1.length/pData.length,0)
-							// expand time series data to include all weekdays
-							x2.domain([(pData.length-1)*weekdayMultiplier,0]);
+							// expand x2 domain to include any additional days
+							x2.domain([d3.min([d3.min(pData, function(d) {return parseTime(d.d);}),d3.min(pData1, function(d) {return parseTime(d.d);})]), d3.max([d3.max(pData, function(d) {return parseTime(d.d);}),d3.max(pData1, function(d) {return parseTime(d.d);})])]);
+							
 							
 						}
 						
@@ -407,6 +425,14 @@ $(document).ready(function() { // wait until html loads to run
 							.attr("heigh",height2 + margin2.top + margin2.bottom)
 							.append("g")
 								.attr("transform","translate(" + margin2.left + "," + margin2.top + ")");
+								
+						// add clip path to limit lines to drawn area
+						svg2.append("defs").append("clipPath")
+							.attr("id","clip")
+							.append("rect")
+							.attr("class","overlay")
+							.attr("width",width2)
+							.attr("height",height2);
 						
 							
 						var xAxis = d3.axisBottom()
@@ -415,6 +441,7 @@ $(document).ready(function() { // wait until html loads to run
 							
 						var xAxis2 = d3.axisBottom()
 							.scale(x2)
+							.tickFormat(formatTime)
 							.ticks(6);
 							
 						var yAxis = d3.axisLeft()
@@ -431,8 +458,8 @@ $(document).ready(function() { // wait until html loads to run
 							.curve(d3.curveBundle.beta(.75));
 						// time series line function, no curve smoothing on displayed data
 						var line2 = d3.line()
-							.x(function(d, i) {return x2(i*weekdayMultiplier);})
-							.y(function(d) {return y2(+d);});
+							.x(function(d) {return x2(parseTime(d.d));})
+							.y(function(d) {return y2(+d.n);});
 						// add groups for each axis
 						svg.append("g")
 							.attr("class", "x axis")
@@ -460,14 +487,15 @@ $(document).ready(function() { // wait until html loads to run
 						svg2.append("path")
 							.datum(pData)
 							.attr("class","line")
-							.attr("d",line2);
+							.attr("d",line2)
+								.attr("clip-path","url(#clip)");
 							
 						// if daily data
 						if(cell.property("bell-graph") == 0) {
 						// create function for every weekday data, smooth curve a bit	
 						var line2 = d3.line()
-							.x(function(d, i) {return x2(i);})
-							.y(function(d) {return y2(+d);});
+							.x(function(d, i) {return x2(parseTime(d.d));})
+							.y(function(d) {return y2(+d.n);});
 							// append a path for probability distribution, make red and thinner to differentiate
 							svg.append("path")
 								.datum(allData1)
@@ -481,7 +509,8 @@ $(document).ready(function() { // wait until html loads to run
 								.attr("class","line")
 								.attr("d",line2)
 								.style("stroke","red")
-								.style("stroke-width",".5px");
+								.style("stroke-width",".5px")
+								.attr("clip-path","url(#clip)");
 						}
 							
 						var colorDirection = cell.property("high-low");
@@ -522,7 +551,8 @@ $(document).ready(function() { // wait until html loads to run
 							.attr("x1",0)
 							.attr("x2",width2)
 							.style("stroke",function(d) {return d.color;})
-							.style("stroke-width",function(d) {return d.width;});
+							.style("stroke-width",function(d) {return d.width;})
+							.attr("clip-path","url(#clip)");
 							
 					}	
 						// set location of pop-up
